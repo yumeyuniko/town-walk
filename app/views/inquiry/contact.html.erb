@@ -19,107 +19,108 @@
 		<a href="index.html">YOGAI</a>
 		
 		<nav>
-		<ul>
-		<li><a href="index.html">トップ</a></li>
-		<li><a href="about.html">サイトについて</a></li>
-		<li><a href="contact.html">お問い合わせ</a></li>
-		</ul>
+			<ul>
+					<li><a href="index.html">トップ</a></li>
+					<li><a href="about.html">サイトについて</a></li>
+					<li><a href="inquiry#contact">お問い合わせ</a></li>
+			</ul>
 		</nav>
 		
 		</div>
 		</header>
-		
-		
 		<div class="contents">
-		<div class="container">
-		
-		<article>
-		
-		<h1>お問い合わせ</h1>
-		
-		<p>ご意見、ご感想などがありましたら、以下の欄にご記入の上、送信してください。記事に関するご質問などもお気軽にお寄せください。</p>
-		
-		<form netlify>
-		<p>
-		<label>
-		名前：
-		<input type="text" name="name">
-		</label>
-		</p>
-		
-		<p>
-		<label>
-		メールアドレス：
-		<input type="email" name="mail">
-		</label>
-		</p>
-		
-		<p>
-		<label>
-		コメント：
-		<textarea name="comment"></textarea>
-		</label>
-		</p>
-		
-		<p><input type="submit" value="送信"></p>
-		</form>
-		
-		</article>
+			<div class="container">
+			<article>
+				<%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+					<% if @inquiry.errors.any? %>
+						<div class="alert alert-danger" role="alert">
+							<strong>入力内容にエラーがあります</strong>
+							<ul>
+								<% @inquiry.errors.each do |attr, msg| %>
+									<li><%= msg %></li>
+								<% end %>
+							</ul>
+						</div>
+					<% end %>
+
+				<h1>お問い合わせ</h1>
+				<p>ご意見、ご感想などがありましたら、以下の欄にご記入の上、送信してください。記事に関するご質問などもお気軽にお寄せください。</p>
+			 	 <p>
+          <label>
+						名前<span class="text-danger">（必須）</span>
+						<%= f.text_field :name %>
+        </label>
+       </p>
+
+        <p>
+          <label>
+						メールアドレス<span class="text-danger">（必須）</span>
+						<%= f.text_field :email %>
+					</label>
+        </p>
+
+         <p>
+          <label>
+						お問い合わせ：
+						<%= f.text_area :message %>	
+			  	</label>
+				</p>
+
+					<%= f.submit '確認', class: 'btn btn-primary' %>
+					<% end %>
+	  	</article>
 		
 		
 		<div class="sub">
-		<aside class="profile">
-		<h2>PROFILE</h2>
-		<figure>
-		<img src="img/foot.svg" alt="YOGAIの管理人">
-		</figure>
-		<p>街歩き＆食べ歩きがライフスタイル。天気がいい日はあちこちに出没しています。</p>
-		</aside>
+			<aside class="profile">
+				<h2>PROFILE</h2>
+						<figure>
+						<%= image_tag 'foot.svg' %>
+						<%# <img src="img/foot.svg" alt="YOGAIの管理人"> %>
+						</figure>
+				<p>街歩き＆食べ歩きがライフスタイル。天気がいい日はあちこちに出没しています。</p>
+			</aside>
+			
 		
-		
-		<aside class="topics">
-		<h2>TOPICS</h2>
-		
-		<ul>
-		<li>
-		<a href="#">
-			<figure><img src="img/fruits.jpg" alt=""></figure>
-			<h3>甘いトマトとすっぱいトマト</h3>
-		</a>
-		</li>
-		
-		<li>
-		<a href="#">
-			<figure><img src="img/cycle.jpg" alt=""></figure>
-			<h3>自転車で行けるところまで行ってみる</h3>
-		</a>
-		</li>
-		
-		<li>
-		<a href="#">
-			<figure><img src="img/green.jpg" alt=""></figure>
-			<h3>緑のワンポイント</h3>
-		</a>
-		</li>
-		
-		<li>
-		<a href="#">
-			<figure><img src="img/time.jpg" alt=""></figure>
-			<h3>タイムアタックでやる気を出してみる</h3>
-		</a>
-		</li>
-		</ul>
-		</aside>
+				<aside class="topics">
+				<h2>TOPICS</h2>
+						<ul>
+							<li>
+									<a href="#">
+										<figure><%= image_tag 'fruits.jpg' %></figure>
+										<h3>甘いトマトとすっぱいトマト</h3>
+									</a>
+							</li>
+						
+							<li>
+									<a href="#">
+										<figure><%= image_tag 'cycle.jpg' %></figure>
+										<h3>自転車で行けるところまで行ってみる</h3>
+									</a>
+							</li>
+				
+							<li>
+									<a href="#">
+										<figure><%= image_tag 'green.jpg' %></figure>
+										<h3>緑のワンポイント</h3>
+									</a>
+							</li>
+				
+							<li>
+									<a href="#">
+											<figure><%= image_tag 'time.jpg' %></figure>
+											<h3>タイムアタックでやる気を出してみる</h3>
+									</a>
+							</li>
+						</ul>
+				</aside>
+		  	</div>	
+	  	</div>
 		</div>
 		
-		</div>
-		</div>
 		
-		
-		<footer>
-		© YOGAI
-		</footer>
-		
-		
-		</body>
+				<footer>
+				© YOGAI
+				</footer>
+  		</body>
 		</html>
